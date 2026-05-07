@@ -1,7 +1,7 @@
 import React from "react";
 import { Text, View } from "react-native";
 // @ts-ignore: side-effect import has no type declarations
-import "./global.css";
+import "../global.css";
 
 const RootLayout = () => {
   return (
