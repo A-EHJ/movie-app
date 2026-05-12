@@ -1,7 +1,15 @@
+import { movieApi } from "@/core/api/movie-api";
+import { MovieDbMoviesResponse } from "@/infrastructure/interfaces/moviedb-responses";
+import { MovieMapper } from "@/infrastructure/mappers/movie.mapper";
+
 export const nowPlayingAction = async () => {
   try {
+    const { data } = await movieApi.get<MovieDbMoviesResponse>("/now_playing");
+    const movies = data.results.map(MovieMapper.fromTheMovieDBToMovie);
+    console.log(movies);
+    return movies;
   } catch (error) {
     console.log(error);
-    throw "Cannot load now playing movies";
+    throw "Cannot load now playing rmovies";
   }
 };
