@@ -1,20 +1,19 @@
 import React from "react";
-import "../global.css";
-// @ts-ignore: side-effect import has no type adeclarations
+import "../app/global.css";
+
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { Stack } from "expo-router";
+
 const queryClient = new QueryClient();
 
-const RootLayout = () => {
+export default function RootLayout() {
   return (
     <QueryClientProvider client={queryClient}>
       <Stack
         screenOptions={{
           headerShown: false,
         }}
-      ></Stack>
+      />
     </QueryClientProvider>
   );
-};
-
-export default RootLayout;
+}

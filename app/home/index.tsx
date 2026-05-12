@@ -1,8 +1,13 @@
-import { Redirect } from "expo-router";
-import React from "react";
+import { useMovies } from "@/presentation/hooks/useMovies";
+import { Text, View } from "react-native";
 
-const MoviesApp = () => {
-  return <Redirect href="/home" />;
-};
+export default function Index() {
+  const { nowPlayingQuery } = useMovies();
 
-export default MoviesApp;
+  return (
+    <View>
+      <Text>Home</Text>
+      <Text>{JSON.stringify(nowPlayingQuery.data)}</Text>
+    </View>
+  );
+}
