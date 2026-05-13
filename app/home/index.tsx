@@ -4,10 +4,10 @@ import {
   useSafeAreaInsets,
 } from "react-native-safe-area-context";
 
-import MainNowPlayingSlideShow from "@/presentation/components/MainNowPlayingSlideshow";
+import MainNowPlayingSlideShow from "@/presentation/components/mainNowPlayingSlideShow";
 import { useMovies } from "@/presentation/hooks/useMovies";
 
-const HomeScreen = () => {
+export default function HomeScreen() {
   const { nowPlayingQuery } = useMovies();
   const safeArea = useSafeAreaInsets();
 
@@ -38,10 +38,10 @@ const HomeScreen = () => {
         <Text className="text-3xl">HomeScreen</Text>
 
         {/*carrusel*/}
-        <MainNowPlayingSlideShow></MainNowPlayingSlideShow>
+        <MainNowPlayingSlideShow
+          movies={nowPlayingQuery.data ?? []}
+        ></MainNowPlayingSlideShow>
       </View>
     </SafeAreaView>
   );
-};
-
-export default HomeScreen;
+}
